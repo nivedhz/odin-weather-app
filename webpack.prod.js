@@ -11,7 +11,7 @@ export default {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    publicPath: "/odin-to-do-list/",
+    publicPath: "/odin-weather-app/",
   },
   plugins: [
     new HtmlWebpackPlugin({
