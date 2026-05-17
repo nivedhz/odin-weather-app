@@ -21,12 +21,36 @@ function createSearchBar() {
   container.append(locationImgEl, formContainer);
   return container;
 }
+function createCurrentForecastStats() {
+  const container = document.createElement("div");
+  container.classList.add("current-forecast__stat-container");
+  const currentTemperature = document.createElement("h1");
+  currentTemperature.classList.add("current-forecast__temperature");
+  const currentWeather = document.createElement("h1");
+  currentWeather.classList.add("current-forecast__weather");
+  const currentWeatherDescription = document.createElement("p");
+  currentWeatherDescription.classList.add(
+    "current-forecast__weather-description",
+  );
+  currentTemperature.textContent = "83\u00B0";
+  currentWeather.textContent = "Rain, Partially cloudy";
+  currentWeatherDescription.textContent =
+    "Partly cloudy throughout the day with storms possible";
+
+  container.append(
+    currentTemperature,
+    currentWeather,
+    currentWeatherDescription,
+  );
+  return container;
+}
 
 export function createCurrentForecastContainer() {
   const container = document.createElement("div");
   container.classList.add("current-forecast__container");
   const searchContainer = createSearchBar();
+  const currentForecastStatContainer = createCurrentForecastStats();
 
-  container.append(searchContainer);
+  container.append(searchContainer, currentForecastStatContainer);
   return container;
 }
