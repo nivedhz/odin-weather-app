@@ -15,6 +15,7 @@ function createSearchBar() {
   searchInput.type = "search";
   searchInput.autocorrect = "off";
   searchInput.spellcheck = false;
+  searchInput.placeholder = "Search for a location";
 
   formContainer.append(searchInput);
   container.append(locationImgEl, formContainer);

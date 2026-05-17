@@ -36,6 +36,9 @@
   outline: none;
   color: white;
 }
+.search-bar__input::placeholder {
+  color: white;
+}
 .search-bar__form-container {
   width: 90%;
 }
