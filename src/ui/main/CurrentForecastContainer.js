@@ -3,6 +3,8 @@ import locationImg from "../../assets/images/location-pin.svg";
 function createSearchBar() {
   const container = document.createElement("div");
   container.classList.add("search-bar__container");
+  const formContainer = document.createElement("form");
+  formContainer.classList.add("search-bar__form-container");
   const searchInput = document.createElement("input");
   searchInput.classList.add("search-bar__input");
   const locationImgEl = document.createElement("img");
@@ -10,8 +12,12 @@ function createSearchBar() {
   locationImgEl.classList.add("search-bar__location-img");
 
   searchInput.id = "search-input";
+  searchInput.type = "search";
+  searchInput.autocorrect = "off";
+  searchInput.spellcheck = false;
 
-  container.append(locationImgEl, searchInput);
+  formContainer.append(searchInput);
+  container.append(locationImgEl, formContainer);
   return container;
 }
 
