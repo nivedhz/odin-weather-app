@@ -1,8 +1,8 @@
 .main-container {
   display: grid;
   grid-template-columns: 350px 1fr;
-  min-height: 50rem;
-  min-width: 80rem;
+  height: 50rem;
+  width: 80rem;
   border-radius: 2rem;
   border: 2px solid rgba(255, 255, 255, 0.2);
   box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.1);
