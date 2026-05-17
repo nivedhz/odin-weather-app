@@ -1,0 +1,30 @@
+.main-container {
+  min-height: 40rem;
+  min-width: 60rem;
+  border-radius: 2rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  overflow: hidden;
+}
+.current-forecast__container {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.search-bar__container {
+  display: flex;
+  padding: 0.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.search-bar__location-img {
+  max-width: 1rem;
+  max-height: 1rem;
+}
