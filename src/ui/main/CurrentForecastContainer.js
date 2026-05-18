@@ -28,6 +28,8 @@ function createSearchBar() {
 function createCurrentForecastStats() {
   const container = document.createElement("div");
   container.classList.add("current-forecast__stat-container");
+  const currentLocation = document.createElement("h1");
+  currentLocation.classList.add("current-forecast__location");
   const currentTemperature = document.createElement("h1");
   currentTemperature.classList.add("current-forecast__temperature");
   const currentWeather = document.createElement("h1");
@@ -36,12 +38,14 @@ function createCurrentForecastStats() {
   currentWeatherDescription.classList.add(
     "current-forecast__weather-description",
   );
+  currentLocation.textContent = "Kochi, India";
   currentTemperature.textContent = "83\u00B0";
   currentWeather.textContent = "Rain, Partially cloudy";
   currentWeatherDescription.textContent =
     "Partly cloudy throughout the day with storms possible";
 
   container.append(
+    currentLocation,
     currentTemperature,
     currentWeather,
     currentWeatherDescription,
