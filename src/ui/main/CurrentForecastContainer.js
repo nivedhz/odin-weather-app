@@ -26,7 +26,12 @@ function createSearchBar() {
   container.append(locationImgEl, formContainer);
   return container;
 }
-function createCurrentForecastStats() {
+function createCurrentForecastStats(
+  location = "Kochi",
+  temperature = "80",
+  weather = "Rain, Partially cloudy",
+  weatherDesc = "Partly cloudy throughout the day with storms possible",
+) {
   const container = document.createElement("div");
   container.classList.add("current-forecast__stat-container");
   const currentLocation = document.createElement("h1");
@@ -39,11 +44,10 @@ function createCurrentForecastStats() {
   currentWeatherDescription.classList.add(
     "current-forecast__weather-description",
   );
-  currentLocation.textContent = "Kochi, India";
-  currentTemperature.textContent = "83\u00B0";
-  currentWeather.textContent = "Rain, Partially cloudy";
-  currentWeatherDescription.textContent =
-    "Partly cloudy throughout the day with storms possible";
+  currentLocation.textContent = location;
+  currentTemperature.textContent = `${temperature}\u00B0`;
+  currentWeather.textContent = weather;
+  currentWeatherDescription.textContent = weatherDesc;
 
   container.append(
     currentLocation,
@@ -110,7 +114,7 @@ function createCurrentForecastGridStats() {
   return container;
 }
 
-export function createCurrentForecastContainer() {
+function createCurrentForecastContainer() {
   const container = document.createElement("div");
   container.classList.add("current-forecast__container");
   const searchContainer = createSearchBar();
@@ -124,3 +128,4 @@ export function createCurrentForecastContainer() {
   );
   return container;
 }
+export { createCurrentForecastContainer, createCurrentForecastStats };

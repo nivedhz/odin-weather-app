@@ -1,4 +1,5 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import Dotenv from "dotenv-webpack";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -17,6 +18,7 @@ export default {
     new HtmlWebpackPlugin({
       template: "./src/template.html",
     }),
+    new Dotenv(),
   ],
   module: {
     rules: [

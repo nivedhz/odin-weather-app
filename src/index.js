@@ -1,3 +1,4 @@
+import { initSearchForm } from "./handlers/searchForm.js";
 import "./styles/index.css";
 import { createMainContainer } from "./ui/main/WeatherContainer.js";
 
@@ -8,3 +9,4 @@ const DOM = {
 };
 
 DOM.container.main.append(createMainContainer());
+initSearchForm();
