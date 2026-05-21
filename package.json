@@ -28,6 +28,6 @@
     "webpack-dev-server": "^5.2.3"
   },
   "dependencies": {
-    "dotenv": "^17.4.2"
+    "dotenv-webpack": "^9.0.0"
   }
 }
