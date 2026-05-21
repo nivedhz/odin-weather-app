@@ -16,6 +16,7 @@ function createSearchBar() {
   locationImgEl.classList.add("search-bar__location-img");
 
   searchInput.id = "search-input";
+  searchInput.name = "searchInput";
   searchInput.type = "search";
   searchInput.autocorrect = "off";
   searchInput.spellcheck = false;
