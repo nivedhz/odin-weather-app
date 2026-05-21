@@ -239,6 +239,8 @@ function createDailyForecast() {
       temperature: "80\u00B0",
     },
   ];
+  containerName.textContent = "10 DAY FORECAST";
+  container.append(containerName);
   dailyForecast.forEach((dailyStat) => {
     const dailyContainer = document.createElement("div");
     dailyContainer.classList.add("upcoming-forecast__daily-el");
