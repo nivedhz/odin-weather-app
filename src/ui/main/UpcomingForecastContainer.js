@@ -163,12 +163,112 @@ function createHourlyForecast() {
   container.append(containerWrapper);
   return container;
 }
+function createDailyForecast() {
+  const container = document.createElement("div");
+  container.classList.add("upcoming-forecast__daily-container");
+  const containerName = document.createElement("h1");
+  containerName.classList.add("upcoming-forecast__daily-container-name");
+  const containerWrapper = document.createElement("div");
+  containerWrapper.classList.add("upcoming-forecast__daily-container-wrapper");
+  const imgConfig = {
+    cloudy: cloudImg,
+    rainy: rainImg,
+    storm: stormImg,
+    snow: snowImg,
+    sun: sunImg,
+  };
+  const dailyForecast = [
+    {
+      day: "Today",
+      date: "19/5",
+      img: imgConfig.rainy,
+      temperature: "81\u00B0",
+    },
+    {
+      day: "Tuesday",
+      date: "20/5",
+      img: imgConfig.cloudy,
+      temperature: "79\u00B0",
+    },
+    {
+      day: "Wednesday",
+      date: "21/5",
+      img: imgConfig.storm,
+      temperature: "77\u00B0",
+    },
+    {
+      day: "Thursday",
+      date: "22/5",
+      img: imgConfig.sun,
+      temperature: "84\u00B0",
+    },
+    {
+      day: "Friday",
+      date: "23/5",
+      img: imgConfig.cloudy,
+      temperature: "82\u00B0",
+    },
+    {
+      day: "Saturday",
+      date: "24/5",
+      img: imgConfig.rainy,
+      temperature: "80\u00B0",
+    },
+    {
+      day: "Sunday",
+      date: "25/5",
+      img: imgConfig.snow,
+      temperature: "74\u00B0",
+    },
+    {
+      day: "Monday",
+      date: "26/5",
+      img: imgConfig.sun,
+      temperature: "85\u00B0",
+    },
+    {
+      day: "Tuesday",
+      date: "27/5",
+      img: imgConfig.storm,
+      temperature: "78\u00B0",
+    },
+    {
+      day: "Wednesday",
+      date: "28/5",
+      img: imgConfig.cloudy,
+      temperature: "80\u00B0",
+    },
+  ];
+  dailyForecast.forEach((dailyStat) => {
+    const dailyContainer = document.createElement("div");
+    dailyContainer.classList.add("upcoming-forecast__daily-el");
+    const dayEl = document.createElement("h1");
+    dayEl.classList.add("upcoming-forecast__daily-day-el");
+    const dateEl = document.createElement("h1");
+    dateEl.classList.add("upcoming-forecast__daily-date-el");
+    const weatherImgEl = document.createElement("img");
+    weatherImgEl.classList.add("upcoming-forecast__daily-img-el");
+    const temperatureEl = document.createElement("h1");
+    temperatureEl.classList.add("upcoming-forecast__daily-temperature-el");
+
+    dayEl.textContent = dailyStat.day;
+    dateEl.textContent = dailyStat.date;
+    weatherImgEl.src = dailyStat.img;
+    temperatureEl.textContent = dailyStat.temperature;
+
+    dailyContainer.append(dayEl, dateEl, weatherImgEl, temperatureEl);
+    containerWrapper.append(dailyContainer);
+  });
+  container.append(containerWrapper);
+  return container;
+}
 
 export function createUpcomingForecastContainer() {
   const container = document.createElement("div");
   container.classList.add("upcoming-forecast__container");
   const hourlyForecastContainer = createHourlyForecast();
+  const dailyForecastContainer = createDailyForecast();
 
-  container.append(hourlyForecastContainer);
+  container.append(hourlyForecastContainer, dailyForecastContainer);
   return container;
 }
