@@ -22,8 +22,8 @@ async function initSearchForm() {
       renderCurrentWeatherStat(
         weatherData.address,
         weatherData.days[0].temp,
+        weatherData.days[0].conditions,
         weatherData.days[0].description,
-        weatherData.description,
       );
       document.querySelector(".search-bar__input").value = "";
     });
