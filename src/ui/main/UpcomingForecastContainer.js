@@ -264,13 +264,49 @@ function createDailyForecast() {
   container.append(containerWrapper);
   return container;
 }
+function createSunActivity() {
+  const sunActivityContainer = document.createElement("div");
+  sunActivityContainer.classList.add("upcoming-forecast__sun-container");
+
+  const sunriseTimeContainer = document.createElement("div");
+  sunriseTimeContainer.classList.add("upcoming-forecast__sunrise-container");
+  const sunriseTimeContainerName = document.createElement("h1");
+  sunriseTimeContainerName.classList.add(
+    "upcoming-forecast__sunrise-container-name",
+  );
+  const sunriseTimeEl = document.createElement("h1");
+  sunriseTimeEl.classList.add("upcoming-forecast__sunrise-time-el");
+  sunriseTimeContainer.append(sunriseTimeContainerName, sunriseTimeEl);
+  sunriseTimeContainerName.textContent = "SUN RISE";
+  sunriseTimeEl.textContent = "6:42 AM";
+
+  const sunsetTimeContainer = document.createElement("div");
+  sunsetTimeContainer.classList.add("upcoming-forecast__sunset-container");
+  const sunsetTimeContainerName = document.createElement("h1");
+  sunsetTimeContainerName.classList.add(
+    "upcoming-forecast__sunset-container-name",
+  );
+  const sunsetTimeEl = document.createElement("h1");
+  sunsetTimeEl.classList.add("upcoming-forecast__sunset-time-el");
+  sunsetTimeContainerName.textContent = "SUN SET";
+  sunsetTimeEl.textContent = "6:42 PM";
+  sunsetTimeContainer.append(sunsetTimeContainerName, sunsetTimeEl);
+
+  sunActivityContainer.append(sunriseTimeContainer, sunsetTimeContainer);
+  return sunActivityContainer;
+}
 
 export function createUpcomingForecastContainer() {
   const container = document.createElement("div");
   container.classList.add("upcoming-forecast__container");
   const hourlyForecastContainer = createHourlyForecast();
   const dailyForecastContainer = createDailyForecast();
+  const sunActivityContainer = createSunActivity();
 
-  container.append(hourlyForecastContainer, dailyForecastContainer);
+  container.append(
+    hourlyForecastContainer,
+    dailyForecastContainer,
+    sunActivityContainer,
+  );
   return container;
 }
