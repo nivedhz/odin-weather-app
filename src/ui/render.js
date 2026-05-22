@@ -1,4 +1,7 @@
-import { createCurrentForecastStats } from "./main/CurrentForecastContainer.js";
+import {
+  createCurrentForecastGridStats,
+  createCurrentForecastStats,
+} from "./main/CurrentForecastContainer.js";
 
 function renderCurrentWeatherStat(location, temperature, weather, weatherDesc) {
   document.querySelector(".current-forecast__stat-container").replaceChildren();
@@ -8,4 +11,22 @@ function renderCurrentWeatherStat(location, temperature, weather, weatherDesc) {
       createCurrentForecastStats(location, temperature, weather, weatherDesc),
     );
 }
-export { renderCurrentWeatherStat };
+function renderCurrentWeatherGrid(
+  feelsLikeTemp,
+  humidity,
+  uvIndex,
+  visibility,
+) {
+  document.querySelector(".current-forecast__grid-container").replaceChildren();
+  document
+    .querySelector(".current-forecast__grid-container")
+    .append(
+      createCurrentForecastGridStats(
+        feelsLikeTemp,
+        humidity,
+        uvIndex,
+        visibility,
+      ),
+    );
+}
+export { renderCurrentWeatherStat, renderCurrentWeatherGrid };

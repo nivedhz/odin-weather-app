@@ -69,7 +69,6 @@
 .current-forecast__grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  grid-template-rows: repeat(auto-fit, 150px);
   gap: 1rem;
 }
 .current-forecast__grid-heading-container {
@@ -87,10 +86,9 @@
   border: 2px solid rgba(255, 255, 255, 0.2);
   padding: 0.5rem;
   overflow: hidden;
-}
-.current-forecast__grid-para-content {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .upcoming-forecast__hourly-container {
   padding: 1rem;

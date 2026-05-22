@@ -1,6 +1,6 @@
 import locationImg from "../../assets/images/location-pin.svg";
 import thermometerImg from "../../assets/images/thermometer-img.svg";
-import airQualityImg from "../../assets/images/air-quality-img.svg";
+import humidityImg from "../../assets/images/humidity-img.svg";
 import uvIndexImg from "../../assets/images/uv-index-img.svg";
 import visibilityImg from "../../assets/images/visibility-img.svg";
 
@@ -57,34 +57,34 @@ function createCurrentForecastStats(
   );
   return container;
 }
-function createCurrentForecastGridStats() {
+function createCurrentForecastGridStats(
+  feelsLikeTemp = "80",
+  humidity = "84",
+  uvIndex = 1,
+  visibility = "12",
+) {
   const container = document.createElement("div");
   container.classList.add("current-forecast__grid-container");
   const gridStats = [
     {
       img: thermometerImg,
       heading: "FEELS LIKE",
-      mainContent: "80\u00B0",
-      paraContent: "It feels colder than the actual temperature",
+      mainContent: `${feelsLikeTemp}\u00B0`,
     },
     {
-      img: airQualityImg,
-      heading: "AIR QUALITY",
-      mainContent: "36",
-      paraContent:
-        "Air quality index is similar to yesterday at about this time",
+      img: humidityImg,
+      heading: "HUMIDITY",
+      mainContent: humidity,
     },
     {
       img: uvIndexImg,
       heading: "UV INDEX",
-      mainContent: "1",
-      paraContent: "Low for the rest of the day",
+      mainContent: uvIndex,
     },
     {
       img: visibilityImg,
       heading: "VISIBILITY",
-      mainContent: "12 km",
-      paraContent: "Clear view",
+      mainContent: `${visibility}km`,
     },
   ];
   gridStats.forEach((gridStat) => {
@@ -98,16 +98,13 @@ function createCurrentForecastGridStats() {
     headingEl.classList.add("current-forecast__grid-heading");
     const mainContentEl = document.createElement("h1");
     mainContentEl.classList.add("current-forecast__grid-main-content");
-    const paraContentEl = document.createElement("p");
-    paraContentEl.classList.add("current-forecast__grid-para-content");
 
     headingImg.src = gridStat.img;
     headingEl.textContent = gridStat.heading;
     mainContentEl.textContent = gridStat.mainContent;
-    paraContentEl.textContent = gridStat.paraContent;
 
     headingContainer.append(headingImg, headingEl);
-    gridEl.append(headingContainer, mainContentEl, paraContentEl);
+    gridEl.append(headingContainer, mainContentEl);
     container.append(gridEl);
   });
 
@@ -128,4 +125,8 @@ function createCurrentForecastContainer() {
   );
   return container;
 }
-export { createCurrentForecastContainer, createCurrentForecastStats };
+export {
+  createCurrentForecastContainer,
+  createCurrentForecastStats,
+  createCurrentForecastGridStats,
+};
