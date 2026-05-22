@@ -3,7 +3,7 @@ import {
   defaultDailyData,
   defaultSunsetTime,
   defaultSunriseTime,
-} from "../../data/state.js";
+} from "../../data/defaultData.js";
 
 function createHourlyForecast() {
   const container = document.createElement("div");
