@@ -7,7 +7,7 @@ function renderCurrentWeatherStat(location, temperature, weather, weatherDesc) {
   document.querySelector(".current-forecast__stat-container").replaceChildren();
   document
     .querySelector(".current-forecast__stat-container")
-    .append(
+    .replaceWith(
       createCurrentForecastStats(location, temperature, weather, weatherDesc),
     );
 }
@@ -20,7 +20,7 @@ function renderCurrentWeatherGrid(
   document.querySelector(".current-forecast__grid-container").replaceChildren();
   document
     .querySelector(".current-forecast__grid-container")
-    .append(
+    .replaceWith(
       createCurrentForecastGridStats(
         feelsLikeTemp,
         humidity,
