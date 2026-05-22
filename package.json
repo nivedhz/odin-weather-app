@@ -1,7 +1,7 @@
 {
   "name": "odin-weather-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Weather app that takes info from Visual Crossing's weather API",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
@@ -13,8 +13,8 @@
     "url": "git+https://github.com/nivedhz/odin-weather-app.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Nivedh E R<nivedher12@gmail.com>",
+  "license": "MIT",
   "type": "module",
   "homepage": "https://github.com/nivedhz/odin-weather-app",
   "devDependencies": {
