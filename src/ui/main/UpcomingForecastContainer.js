@@ -6,7 +6,7 @@ import sunImg from "../../assets/images/sun-img.svg";
 
 function createHourlyForecast() {
   const container = document.createElement("div");
-  container.classList.add("upcoming-forecast__hourly-container");
+  container.classList.add("upcoming-forecast__hourly-container-el");
   const containerName = document.createElement("h1");
   containerName.classList.add("upcoming-forecast__hourly-container-name");
   const containerWrapper = document.createElement("div");
@@ -165,7 +165,7 @@ function createHourlyForecast() {
 }
 function createDailyForecast() {
   const container = document.createElement("div");
-  container.classList.add("upcoming-forecast__daily-container");
+  container.classList.add("upcoming-forecast__daily-container-el");
   const containerName = document.createElement("h1");
   containerName.classList.add("upcoming-forecast__daily-container-name");
   const containerWrapper = document.createElement("div");
@@ -299,10 +299,14 @@ function createSunActivity() {
 export function createUpcomingForecastContainer() {
   const container = document.createElement("div");
   container.classList.add("upcoming-forecast__container");
-  const hourlyForecastContainer = createHourlyForecast();
-  const dailyForecastContainer = createDailyForecast();
+  const hourlyForecastContainer = document.createElement("div");
+  hourlyForecastContainer.classList.add("upcoming-forecast__hourly-container");
+  const dailyForecastContainer = document.createElement("div");
+  dailyForecastContainer.classList.add("upcoming-forecast__daily-container");
   const sunActivityContainer = createSunActivity();
 
+  hourlyForecastContainer.append(createHourlyForecast());
+  dailyForecastContainer.append(createDailyForecast());
   container.append(
     hourlyForecastContainer,
     dailyForecastContainer,
