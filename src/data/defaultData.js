@@ -4,6 +4,7 @@ import sunImg from "../assets/images/sun-img.svg";
 import moonImg from "../assets/images/moon-img.svg";
 import fogImg from "../assets/images/fog-img.svg";
 import windImg from "../assets/images/wind-img.svg";
+import snowImg from "../assets/images/snow-img.svg";
 
 const imgConfig = {
   cloudy: cloudImg,
@@ -14,6 +15,7 @@ const imgConfig = {
   "clear-night": moonImg,
   fog: fogImg,
   wind: windImg,
+  snow: snowImg,
 };
 
 const defaultHourlyData = [
