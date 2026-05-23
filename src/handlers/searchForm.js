@@ -3,10 +3,13 @@ import _ from "lodash";
 import {
   renderCurrentWeatherGrid,
   renderCurrentWeatherStat,
+  renderDailyForecast,
+  renderHourlyForecast,
+  renderSunActivity,
 } from "../ui/render.js";
 
 async function initDefaultFunctions() {
-  const weatherData = await getData("Kochi");
+  const weatherData = await getData("Palakkad");
   renderCurrentWeatherStat(
     weatherData.address,
     weatherData.days[0].temp,
@@ -19,6 +22,9 @@ async function initDefaultFunctions() {
     weatherData.days[0].uvindex,
     weatherData.days[0].visibility,
   );
+  renderHourlyForecast(weatherData.days[0].hours);
+  renderDailyForecast(weatherData.days);
+  renderSunActivity(weatherData.days[0]);
   document
     .querySelector(".search-bar__form-container")
     .addEventListener("submit", async (e) => {
@@ -40,6 +46,9 @@ async function initDefaultFunctions() {
         weatherData.days[0].uvindex,
         weatherData.days[0].visibility,
       );
+      renderHourlyForecast(weatherData.days[0].hours);
+      renderDailyForecast(weatherData.days);
+      renderSunActivity(weatherData.days[0]);
       document.querySelector(".search-bar__input").value = "";
     });
 }

@@ -2,7 +2,10 @@ import {
   createCurrentForecastGridStats,
   createCurrentForecastStats,
 } from "./main/CurrentForecastContainer.js";
-import { createHourlyForecastEl } from "./main/UpcomingForecastContainer.js";
+import {
+  createDailyForecastEl,
+  createHourlyForecastEl,
+} from "./main/UpcomingForecastContainer.js";
 
 function renderCurrentWeatherStat(location, temperature, weather, weatherDesc) {
   document.querySelector(".current-forecast__stat-container").replaceChildren();
@@ -34,12 +37,30 @@ function renderHourlyForecast(hourlyData) {
   const containerWrapper = document.querySelector(
     ".upcoming-forecast__hourly-container-wrapper",
   );
-  containerWrapper.replaceChildren(
+  containerWrapper.replaceChildren();
+  containerWrapper.replaceWith(
     createHourlyForecastEl(hourlyData, containerWrapper),
   );
+}
+function renderDailyForecast(dailyData) {
+  const containerWrapper = document.querySelector(
+    ".upcoming-forecast__daily-container-wrapper",
+  );
+  containerWrapper.replaceChildren();
+  containerWrapper.replaceWith(
+    createDailyForecastEl(dailyData, containerWrapper),
+  );
+}
+function renderSunActivity(currentDay) {
+  document.querySelector(".upcoming-forecast__sunrise-time-el").textContent =
+    currentDay.sunrise.slice(0, 5) + " AM";
+  document.querySelector(".upcoming-forecast__sunset-time-el").textContent =
+    currentDay.sunset.slice(0, 5) + " PM";
 }
 export {
   renderCurrentWeatherStat,
   renderCurrentWeatherGrid,
   renderHourlyForecast,
+  renderDailyForecast,
+  renderSunActivity,
 };

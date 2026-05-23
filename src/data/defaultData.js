@@ -2,6 +2,8 @@ import cloudImg from "../assets/images/cloud-img.svg";
 import rainImg from "../assets/images/cloud-rain-img.svg";
 import sunImg from "../assets/images/sun-img.svg";
 import moonImg from "../assets/images/moon-img.svg";
+import fogImg from "../assets/images/fog-img.svg";
+import windImg from "../assets/images/wind-img.svg";
 
 const imgConfig = {
   cloudy: cloudImg,
@@ -10,6 +12,8 @@ const imgConfig = {
   rain: rainImg,
   "clear-day": sunImg,
   "clear-night": moonImg,
+  fog: fogImg,
+  wind: windImg,
 };
 
 const defaultHourlyData = [
@@ -133,11 +137,6 @@ const defaultHourlyData = [
     icon: "partly-cloudy-night",
     temp: "76",
   },
-  {
-    datetime: "24:00",
-    icon: "clear-night",
-    temp: "75",
-  },
 ];
 const defaultDailyData = [
   {
@@ -217,8 +216,8 @@ const defaultDailyData = [
   },
 ];
 
-const defaultSunriseTime = "6:42 AM";
-const defaultSunsetTime = "6:42 PM";
+const defaultSunriseTime = "6:42";
+const defaultSunsetTime = "18:42";
 
 export {
   defaultDailyData,

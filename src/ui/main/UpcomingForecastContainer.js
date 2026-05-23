@@ -24,6 +24,7 @@ function createHourlyForecastEl(hourlyData, containerWrapper) {
     hourlyContainer.append(timeEl, weatherImgEl, temperatureEl);
     containerWrapper.append(hourlyContainer);
   });
+  return containerWrapper;
 }
 function createHourlyForecastContainer() {
   const container = document.createElement("div");
@@ -58,6 +59,7 @@ function createDailyForecastEl(dailyData, containerWrapper) {
     dailyContainer.append(dateEl, weatherImgEl, temperatureEl);
     containerWrapper.append(dailyContainer);
   });
+  return containerWrapper;
 }
 function createDailyForecastContainer() {
   const container = document.createElement("div");
@@ -74,6 +76,7 @@ function createDailyForecastContainer() {
   container.append(containerWrapper);
   return container;
 }
+
 function createSunActivity() {
   const sunActivityContainer = document.createElement("div");
   sunActivityContainer.classList.add("upcoming-forecast__sun-container");
@@ -88,7 +91,7 @@ function createSunActivity() {
   sunriseTimeEl.classList.add("upcoming-forecast__sunrise-time-el");
   sunriseTimeContainer.append(sunriseTimeContainerName, sunriseTimeEl);
   sunriseTimeContainerName.textContent = "SUN RISE";
-  sunriseTimeEl.textContent = defaultSunriseTime;
+  sunriseTimeEl.textContent = `${defaultSunriseTime} AM`;
 
   const sunsetTimeContainer = document.createElement("div");
   sunsetTimeContainer.classList.add("upcoming-forecast__sunset-container");
@@ -99,7 +102,7 @@ function createSunActivity() {
   const sunsetTimeEl = document.createElement("h1");
   sunsetTimeEl.classList.add("upcoming-forecast__sunset-time-el");
   sunsetTimeContainerName.textContent = "SUN SET";
-  sunsetTimeEl.textContent = defaultSunsetTime;
+  sunsetTimeEl.textContent = `${defaultSunsetTime} PM`;
   sunsetTimeContainer.append(sunsetTimeContainerName, sunsetTimeEl);
 
   sunActivityContainer.append(sunriseTimeContainer, sunsetTimeContainer);
