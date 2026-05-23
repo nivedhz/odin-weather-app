@@ -3,18 +3,11 @@ import {
   defaultDailyData,
   defaultSunsetTime,
   defaultSunriseTime,
+  imgConfig,
 } from "../../data/defaultData.js";
 
-function createHourlyForecast() {
-  const container = document.createElement("div");
-  container.classList.add("upcoming-forecast__hourly-container-el");
-  const containerName = document.createElement("h1");
-  containerName.classList.add("upcoming-forecast__hourly-container-name");
-  const containerWrapper = document.createElement("div");
-  containerWrapper.classList.add("upcoming-forecast__hourly-container-wrapper");
-  containerName.textContent = "HOURLY FORECAST";
-  container.append(containerName);
-  defaultHourlyData.forEach((hourStat) => {
+function createHourlyForecastEl(hourlyData, containerWrapper) {
+  hourlyData.forEach((hourStat) => {
     const hourlyContainer = document.createElement("div");
     hourlyContainer.classList.add("upcoming-forecast__hourly-el");
     const timeEl = document.createElement("h1");
@@ -24,31 +17,33 @@ function createHourlyForecast() {
     const temperatureEl = document.createElement("h1");
     temperatureEl.classList.add("upcoming-forecast__hourly-temperature-el");
 
-    timeEl.textContent = hourStat.time;
-    weatherImgEl.src = hourStat.img;
-    temperatureEl.textContent = hourStat.temperature;
+    timeEl.textContent = hourStat.datetime.slice(0, 5);
+    weatherImgEl.src = imgConfig[hourStat.icon];
+    temperatureEl.textContent = `${hourStat.temp}\u00B0`;
 
     hourlyContainer.append(timeEl, weatherImgEl, temperatureEl);
     containerWrapper.append(hourlyContainer);
   });
+}
+function createHourlyForecastContainer() {
+  const container = document.createElement("div");
+  container.classList.add("upcoming-forecast__hourly-container-el");
+  const containerName = document.createElement("h1");
+  containerName.classList.add("upcoming-forecast__hourly-container-name");
+  const containerWrapper = document.createElement("div");
+  containerWrapper.classList.add("upcoming-forecast__hourly-container-wrapper");
+  containerName.textContent = "HOURLY FORECAST";
+  container.append(containerName);
+  createHourlyForecastEl(defaultHourlyData, containerWrapper);
 
   container.append(containerWrapper);
   return container;
 }
-function createDailyForecast() {
-  const container = document.createElement("div");
-  container.classList.add("upcoming-forecast__daily-container-el");
-  const containerName = document.createElement("h1");
-  containerName.classList.add("upcoming-forecast__daily-container-name");
-  const containerWrapper = document.createElement("div");
-  containerWrapper.classList.add("upcoming-forecast__daily-container-wrapper");
-  containerName.textContent = "10 DAY FORECAST";
-  container.append(containerName);
-  defaultDailyData.forEach((dailyStat) => {
+
+function createDailyForecastEl(dailyData, containerWrapper) {
+  dailyData.forEach((dailyStat) => {
     const dailyContainer = document.createElement("div");
     dailyContainer.classList.add("upcoming-forecast__daily-el");
-    const dayEl = document.createElement("h1");
-    dayEl.classList.add("upcoming-forecast__daily-day-el");
     const dateEl = document.createElement("h1");
     dateEl.classList.add("upcoming-forecast__daily-date-el");
     const weatherImgEl = document.createElement("img");
@@ -56,14 +51,26 @@ function createDailyForecast() {
     const temperatureEl = document.createElement("h1");
     temperatureEl.classList.add("upcoming-forecast__daily-temperature-el");
 
-    dayEl.textContent = dailyStat.day;
-    dateEl.textContent = dailyStat.date;
-    weatherImgEl.src = dailyStat.img;
-    temperatureEl.textContent = dailyStat.temperature;
+    dateEl.textContent = dailyStat.datetime.slice(5, 10);
+    weatherImgEl.src = imgConfig[dailyStat.icon];
+    temperatureEl.textContent = `${dailyStat.temp}\u00B0`;
 
-    dailyContainer.append(dayEl, dateEl, weatherImgEl, temperatureEl);
+    dailyContainer.append(dateEl, weatherImgEl, temperatureEl);
     containerWrapper.append(dailyContainer);
   });
+}
+function createDailyForecastContainer() {
+  const container = document.createElement("div");
+  container.classList.add("upcoming-forecast__daily-container-el");
+  const containerName = document.createElement("h1");
+  containerName.classList.add("upcoming-forecast__daily-container-name");
+  const containerWrapper = document.createElement("div");
+  containerWrapper.classList.add("upcoming-forecast__daily-container-wrapper");
+  containerName.textContent = "15 DAY FORECAST";
+  container.append(containerName);
+
+  createDailyForecastEl(defaultDailyData, containerWrapper);
+
   container.append(containerWrapper);
   return container;
 }
@@ -99,7 +106,7 @@ function createSunActivity() {
   return sunActivityContainer;
 }
 
-export function createUpcomingForecastContainer() {
+function createUpcomingForecastContainer() {
   const container = document.createElement("div");
   container.classList.add("upcoming-forecast__container");
   const hourlyForecastContainer = document.createElement("div");
@@ -108,8 +115,8 @@ export function createUpcomingForecastContainer() {
   dailyForecastContainer.classList.add("upcoming-forecast__daily-container");
   const sunActivityContainer = createSunActivity();
 
-  hourlyForecastContainer.append(createHourlyForecast());
-  dailyForecastContainer.append(createDailyForecast());
+  hourlyForecastContainer.append(createHourlyForecastContainer());
+  dailyForecastContainer.append(createDailyForecastContainer());
   container.append(
     hourlyForecastContainer,
     dailyForecastContainer,
@@ -117,3 +124,9 @@ export function createUpcomingForecastContainer() {
   );
   return container;
 }
+
+export {
+  createDailyForecastEl,
+  createHourlyForecastEl,
+  createUpcomingForecastContainer,
+};

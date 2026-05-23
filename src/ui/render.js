@@ -2,6 +2,7 @@ import {
   createCurrentForecastGridStats,
   createCurrentForecastStats,
 } from "./main/CurrentForecastContainer.js";
+import { createHourlyForecastEl } from "./main/UpcomingForecastContainer.js";
 
 function renderCurrentWeatherStat(location, temperature, weather, weatherDesc) {
   document.querySelector(".current-forecast__stat-container").replaceChildren();
@@ -29,4 +30,16 @@ function renderCurrentWeatherGrid(
       ),
     );
 }
-export { renderCurrentWeatherStat, renderCurrentWeatherGrid };
+function renderHourlyForecast(hourlyData) {
+  const containerWrapper = document.querySelector(
+    ".upcoming-forecast__hourly-container-wrapper",
+  );
+  containerWrapper.replaceChildren(
+    createHourlyForecastEl(hourlyData, containerWrapper),
+  );
+}
+export {
+  renderCurrentWeatherStat,
+  renderCurrentWeatherGrid,
+  renderHourlyForecast,
+};
