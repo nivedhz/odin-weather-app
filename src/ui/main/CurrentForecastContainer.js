@@ -27,7 +27,7 @@ function createSearchBar() {
   return container;
 }
 function createCurrentForecastStats(
-  location = "Kochi",
+  location = "Palakkad",
   temperature = "80",
   weather = "Rain, Partially cloudy",
   weatherDesc = "Partly cloudy throughout the day with storms possible",
