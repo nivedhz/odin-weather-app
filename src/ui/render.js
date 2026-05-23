@@ -38,18 +38,14 @@ function renderHourlyForecast(hourlyData) {
     ".upcoming-forecast__hourly-container-wrapper",
   );
   containerWrapper.replaceChildren();
-  containerWrapper.replaceWith(
-    createHourlyForecastEl(hourlyData, containerWrapper),
-  );
+  createHourlyForecastEl(hourlyData, containerWrapper);
 }
 function renderDailyForecast(dailyData) {
   const containerWrapper = document.querySelector(
     ".upcoming-forecast__daily-container-wrapper",
   );
   containerWrapper.replaceChildren();
-  containerWrapper.replaceWith(
-    createDailyForecastEl(dailyData, containerWrapper),
-  );
+  createDailyForecastEl(dailyData, containerWrapper);
 }
 function renderSunActivity(currentDay) {
   document.querySelector(".upcoming-forecast__sunrise-time-el").textContent =
